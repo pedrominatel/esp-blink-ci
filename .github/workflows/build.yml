@@ -37,7 +37,7 @@ jobs:
           path: ${{ matrix.path }}
           command: |
             idf.py build &&
-            cd build.${{ matrix.espidf_target }} &&
+            cd build &&
             esptool.py --chip ${{ env.TARGET }} merge_bin -o ${{ github.event.inputs.prefix }}-${{ matrix.espidf_target }}.bin "@flash_args"
 
       - name: Upload Build Artifacts
