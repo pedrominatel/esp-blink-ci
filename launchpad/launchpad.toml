@@ -1,0 +1,8 @@
+esp_toml_version = 1.0
+firmware_images_url = "https://pedrominatel.github.io/esp-blink-ci/launchpad/bin/"
+
+supported_apps = ["blink"]
+
+[blink]
+chipsets = ["ESP32C3"]
+image.esp32c3 = "esp32c3-merged.bin"
