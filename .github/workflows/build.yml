@@ -35,3 +35,13 @@ jobs:
           esp_idf_version: "latest"
           target: ${{ matrix.espidf_target }}
           path: ${{ matrix.path }}
+          command: |
+            idf.py @blink-app/${{ matrix.espidf_target }}.cfg build &&
+            cd build.${{ matrix.espidf_target }} &&
+            esptool.py --chip ${{ env.TARGET }} merge_bin -o ${{ github.event.inputs.prefix }}-${{ matrix.espidf_target }}.bin "@flash_args"
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.event.inputs.prefix }}-${{ matrix.espidf_target }}.bin
+          path: build.${{ matrix.espidf_target }}/${{ github.event.inputs.prefix }}-${{ matrix.espidf_target }}.bin
