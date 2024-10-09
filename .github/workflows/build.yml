@@ -44,4 +44,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.espidf_target }}-merged.bin
-          path: build/${{ matrix.espidf_target }}-merged.bin
+          path: ${{ matrix.path }}/build/${{ matrix.espidf_target }}-merged.bin
