@@ -1,0 +1,33 @@
+name: 'build-launchpad'
+
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+
+  build:
+    strategy:
+      matrix:
+        idf_ver: ["latest"]
+    runs-on: ubuntu-latest
+    container: espressif/idf:${{ matrix.idf_ver }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+
+      - name: Action for Building and Uploading Binaries
+        uses: espressif/idf-examples-launchpad-ci-action@v1.0.1
+        with:
+          idf_version: ${{ matrix.idf_ver }}
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: built_files
+          path: binaries/

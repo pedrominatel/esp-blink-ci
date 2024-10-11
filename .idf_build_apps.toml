@@ -1,0 +1,6 @@
+paths = "blink-app"
+target = "all"
+recursive = false
+
+# Configuration file for the build process 
+# config = "sdkconfig.defaults"
