@@ -1,8 +1,9 @@
-name: 'build'
+name: release
 
 on:
-  pull_request:
-    types: [opened, reopened, synchronize]
+  release:
+    types:
+      - created
 
 jobs:
   build:
@@ -34,3 +35,11 @@ jobs:
           path: ${{ matrix.path }}
           command: |
             idf.py build &&
+            cd build &&
+            esptool.py --chip ${{ matrix.espidf_target }} merge_bin -o ${{ matrix.espidf_target }}-merged.bin "@flash_args"
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.espidf_target }}-merged.bin
+          path: ${{ matrix.path }}/build/${{ matrix.espidf_target }}-merged.bin

@@ -4,5 +4,29 @@ firmware_images_url = "https://pedrominatel.github.io/esp-blink-ci/launchpad/bin
 supported_apps = ["blink"]
 
 [blink]
+chipsets = ["ESP32"]
+image.esp32 = "esp32-merged.bin"
+
+[blink]
 chipsets = ["ESP32C3"]
 image.esp32c3 = "esp32c3-merged.bin"
+
+[blink]
+chipsets = ["ESP32S2"]
+image.esp32s2 = "esp32s2-merged.bin"
+
+[blink]
+chipsets = ["ESP32S3"]
+image.esp32s3 = "esp32s3-merged.bin"
+
+[blink]
+chipsets = ["ESP32H2"]
+image.esp32h2 = "esp32h2-merged.bin"
+
+[blink]
+chipsets = ["ESP32C6"]
+image.esp32c6 = "esp32c6-merged.bin"
+
+[blink]
+chipsets = ["ESP32P4"]
+image.esp32p4 = "esp32p4-merged.bin"
