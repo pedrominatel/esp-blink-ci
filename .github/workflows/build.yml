@@ -33,4 +33,4 @@ jobs:
           target: ${{ matrix.espidf_target }}
           path: ${{ matrix.path }}
           command: |
-            idf.py build &&
+            idf.py build
